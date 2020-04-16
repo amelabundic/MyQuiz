@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylequiz.css">
+</head>
+<body>
+    <form id="form1">
+        <p>Koji je glavni grad Slovenije?</p>
+        <input type="radio" id="pitanje1" value="Ljubljana">Ljubljana<br>
+        <input type="radio" id="pitanje1" value="Oslo">Oslo<br>
+        <input type="radio" id="pitanje1" value="Budimpesta">Budimpesta<br>
+
+        <p>Koji je glavni grad Norveske?</p>
+        <input type="radio" id="pitanje2" value="Ronebi">Ronebi<br>
+        <input type="radio" id="pitanje2" value="Oslo">Oslo<br>
+        <input type="radio" id="pitanje2" value="Nica">Nica<br>
+
+        <p>Koji je glavni grad Danske?</p>
+        <input type="radio" id="pitanje3" value="Skoplje">Skoplje<br>
+        <input type="radio" id="pitanje3" value="Kopenhagen">Kopenhagen<br>
+        <input type="radio" id="pitanje3" value="Dablin">Dablin<br>
+
+        <p>Koji je glavni grad Turske?</p>
+        <input type="radio" id="pitanje4" value="Lisabon">Lisabon<br>
+        <input type="radio" id="pitanje4" value="Istanbul">Istanbul<br>
+        <input type="radio" id="pitanje4" value="Izmir">Izmir<br>
+
+        <input id="button" type="button" value="Zavrseno" onclick="Provjeri()"><br>
+    </form> 
+    <br>
+    <div id="DugmePoslije">
+    <p id="kolikoTacnih"></p>
+    <p id="poruka"></p>
+    <img id="slika">
+    </div>
+
+    <script>
+        function Provjeri() {
+            form1 = document.getElementById("form1");
+            
+            pitanje1 = form1.pitanje1.value;
+            pitanje2 = form1.pitanje2.value;
+            pitanje3 = form1.pitanje3.value;
+            pitanje4 = form1.pitanje4.value;
+
+            tacno = 0;
+
+            if (pitanje1 == "Ljubljana") {
+                tacno++;
+            }
+            if (pitanje2 == "Oslo") {
+                tacno++;
+            }
+            if (pitanje3 == "Kopenhagen") {
+                tacno++;
+            }
+            if (pitanje4 == "Istanbul") {
+                tacno++;
+            }
+            
+            var poruke = ["Odlicno!!", "Vrlo dobro!!", "Mozes ti bolje!!"];
+            var slike = [ "slikekviz/uspjesno.jpg","slikekviz/srednje.jpg","slikekviz/lose.jpg"]; 
+             var range;
+
+             if (tacno >3) {
+                 range = 0;
+             }
+             if (tacno == 2) {
+                 range = 1;
+             }
+             if (tacno < 2) {
+                 range = 2;
+             }
+            
+             
+
+           var DugmePoslije = document.getElementById("DugmePoslije");
+           DugmePoslije.style.visibility = "visible"; 
+           var kolikoTacnih = document.getElementById("kolikoTacnih");
+           kolikoTacnih.innerHTML = "Imas " + " " + tacno + " "+ " tacna."
+           var poruka = document.getElementById("poruka");
+           poruka.innerHTML = poruke[range];
+           document.getElementById("slika").src = slike[range];
+        
+        }
+    </script>
+</body>
+</html>
